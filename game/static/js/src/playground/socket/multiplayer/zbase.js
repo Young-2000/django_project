@@ -159,15 +159,12 @@ class MultiPlayerSocket {
         this.ws.send(JSON.stringify({
             'event': "message",
             'uuid': outer.uuid,
+            'username': username,
             'text': text,
         }));
     }
 
     receive_message(uuid, text) {
-        let player = this.get_player(uuid);
-
-        if(player) {
-            player.playground.chat_field.add_message(player.username, text);
-        }
+        this.playground.chat_field.add_message(player.username, text);
     }
 }
